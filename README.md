@@ -8,6 +8,6 @@
 
 This plugin automatically add the following actions to `file` scheme.
 
-| Mapping | Action              | Description                                           |
-| ------- | ------------------- | ----------------------------------------------------- |
-| `^`     | `enter-project-top` | Find `.git` from the node and enter a found directory |
+| Mapping | Action        | Description                                           |
+| ------- | ------------- | ----------------------------------------------------- |
+| `^`     | `project-top` | Find `.git` from the node and enter a found directory |
