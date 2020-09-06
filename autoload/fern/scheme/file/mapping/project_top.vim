@@ -1,11 +1,8 @@
-function! fern#mapping#project_top#init(disable_default_mappings) abort
-  let helper = fern#helper#new()
-
+function! fern#scheme#file#mapping#project_top#init(disable_default_mappings) abort
   nnoremap <buffer><silent> <Plug>(fern-action-project-top) :<C-u>call <SID>call('project_top')<CR>
 
   if !a:disable_default_mappings
         \ && !g:fern#mapping#project_top#disable_default_mappings
-        \ && helper.sync.get_scheme() ==# 'file'
     nmap <buffer><nowait> ^ <Plug>(fern-action-project-top)
   endif
 endfunction
@@ -18,13 +15,11 @@ function! s:call(name, ...) abort
 endfunction
 
 function! s:map_project_top(helper) abort
-  if a:helper.sync.get_scheme() !=# 'file'
-    throw printf("project-top action requires 'file' scheme")
-  endif
   let root = a:helper.sync.get_root_node()
   let path = root._path
   let path = finddir('.git/..', path . ';')
   execute printf('Fern %s', fnameescape(path))
 endfunction
 
-let g:fern#mapping#project_top#disable_default_mappings = get(g:, 'fern#mapping#project_top#disable_default_mappings', 0)
+let g:fern#scheme#file#mapping#project_top#disable_default_mappings =
+      \ get(g:, 'fern#scheme#file#mapping#project_top#disable_default_mappings', 0)
