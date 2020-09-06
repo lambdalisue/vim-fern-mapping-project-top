@@ -1,0 +1,24 @@
+*fern-mapping-project-top.txt*	Fern mapping to enter the project top
+
+Author:  Alisue <lambdalisue@hashnote.net>
+License: MIT license
+
+=============================================================================
+CONTENTS			*fern-mapping-project-top-contents*
+
+MAPPING				|fern-mapping-project-top-mapping|
+
+
+=============================================================================
+MAPPING				*fern-mapping-project-top-mapping*
+
+*<Plug>(fern-action-project-top)*
+	Find a project top directory from the root directory of the fern and
+	enter it.
+
+*<Plug>(fern-action-project-top:reveal)*
+	Like |<Plug>(fern-action-project-top)| but reveal the current cursor
+	node after entring the project-top.
+
+=============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
