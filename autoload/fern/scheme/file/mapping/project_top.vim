@@ -16,8 +16,10 @@ endfunction
 
 function! s:map_project_top(helper) abort
   let root = a:helper.sync.get_root_node()
-  let path = root._path
-  let path = finddir('.git/..', path . ';')
+  let path = finddir('.git/..', root._path . ';')
+  if empty(path)
+    throw 'No project top directory found'
+  endif
   execute printf('Fern %s', fnameescape(path))
 endfunction
 
