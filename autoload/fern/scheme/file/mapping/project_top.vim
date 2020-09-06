@@ -1,5 +1,6 @@
 function! fern#scheme#file#mapping#project_top#init(disable_default_mappings) abort
-  nnoremap <buffer><silent> <Plug>(fern-action-project-top) :<C-u>call <SID>call('project_top')<CR>
+  nnoremap <buffer><silent> <Plug>(fern-action-project-top) :<C-u>call <SID>call('project_top', 0)<CR>
+  nnoremap <buffer><silent> <Plug>(fern-action-project-top:reveal) :<C-u>call <SID>call('project_top', 1)<CR>
 
   if !a:disable_default_mappings
         \ && !g:fern#mapping#project_top#disable_default_mappings
@@ -14,13 +15,21 @@ function! s:call(name, ...) abort
         \)
 endfunction
 
-function! s:map_project_top(helper) abort
+function! s:map_project_top(helper, reveal) abort
   let root = a:helper.sync.get_root_node()
   let path = finddir('.git/..', root._path . ';')
   if empty(path)
     throw 'No project top directory found'
   endif
-  execute printf('Fern %s', fnameescape(path))
+  if a:reveal
+    execute printf(
+          \ 'Fern %s -reveal=%s',
+          \ fnameescape(path),
+          \ fnameescape(a:helper.sync.get_cursor_node()._path),
+          \)
+  else
+    execute printf('Fern %s', fnameescape(path))
+  endif
 endfunction
 
 let g:fern#scheme#file#mapping#project_top#disable_default_mappings =
