@@ -1,11 +1,6 @@
 function! fern#scheme#file#mapping#project_top#init(disable_default_mappings) abort
   nnoremap <buffer><silent> <Plug>(fern-action-project-top) :<C-u>call <SID>call('project_top', 0)<CR>
   nnoremap <buffer><silent> <Plug>(fern-action-project-top:reveal) :<C-u>call <SID>call('project_top', 1)<CR>
-
-  if !a:disable_default_mappings
-        \ && !g:fern#mapping#project_top#disable_default_mappings
-    nmap <buffer><nowait> ^ <Plug>(fern-action-project-top)
-  endif
 endfunction
 
 function! s:call(name, ...) abort
