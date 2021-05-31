@@ -26,6 +26,3 @@ function! s:map_project_top(helper, reveal) abort
     execute printf('Fern %s', fnameescape(path))
   endif
 endfunction
-
-let g:fern#scheme#file#mapping#project_top#disable_default_mappings =
-      \ get(g:, 'fern#scheme#file#mapping#project_top#disable_default_mappings', 0)
